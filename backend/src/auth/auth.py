@@ -9,6 +9,7 @@ AUTH0_DOMAIN = 'omarelweshy1.auth0.com'
 ALGORITHMS = ['RS256']
 API_AUDIENCE = 'coffee'
 
+
 # AuthError Exception => DONE
 class AuthError(Exception):
     def __init__(self, error, status_code):
@@ -46,6 +47,7 @@ def get_token_auth_header():
 
     token = parts[1]
     return token
+
 
 def verify_decode_jwt(token):
     jsonurl = urlopen(f'https://{AUTH0_DOMAIN}/.well-known/jwks.json')
@@ -115,6 +117,7 @@ def check_permissions(permission, payload):
             'description': 'Permission not found.'
         }, 401)
     return True
+
 
 def requires_auth(permission=''):
     def requires_auth_decorator(f):
